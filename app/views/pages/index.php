@@ -1,14 +1,12 @@
 <?php require_once(APPROOT."/views/inc/header.php") ?>
 
-<h1>
-	<?php 
-		echo $data['title'];
-	 ?>
-</h1>
-<p>PHP MVC Framework</p>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1><?php echo $data['title']; 	?></h1>
+		<p class="lead"><?php echo $data['description']; 	?></p>
+	</div>
+</div>
 
 
-
-<?php //echo APPROOT; ?>
 
 <?php require_once(APPROOT."/views/inc/footer.php") ?>
