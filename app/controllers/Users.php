@@ -142,7 +142,8 @@ class Users extends Controller
 				//check and set user
 				$loggedInUser = $this->userModel->login($dt['email'], $dt['password']);
 				if ($loggedInUser) {
-					die('Logged in');
+					//create session
+					$this->createUserSession($loggedInUser);
 				}
 				else
 				{
@@ -172,6 +173,30 @@ class Users extends Controller
 
 			
 		}
+	}
+
+	public function createUserSession($user)
+	{
+		$_SESSION['user_id'] = $user->id;
+		$_SESSION['user_email'] = $user->email;
+		$_SESSION['user_name'] = $user->name;
+		redirect('pages/index');
+	}
+
+	public function logout()
+	{
+		//unset($_SESSION['user_id']);
+		session_destroy();
+		redirect('users/login');
+	}
+
+	public function isLoggedIn()
+	{
+		if (isset($_SESSION['user_id'])) 
+			return true;
+		else
+			return false;
+		
 	}
 }
 

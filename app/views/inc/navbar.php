@@ -20,8 +20,12 @@
         <li><a href="<?php echo URLROOT; ?>/pages/about">About</a></li>        
       </ul>      
       <ul class="nav navbar-nav navbar-right">
+        <?php if (isset($_SESSION['user_id'])):  ?>
+        <li class=""><a href="<?php echo URLROOT; ?>/users/logout">Logout</a></li>
+        <?php else: ?>
         <li class=""><a href="<?php echo URLROOT; ?>/users/register">Register</a></li>
         <li><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
+        <?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
