@@ -41,6 +41,16 @@ class User
 			return false;
 	}
 
+	public function getUserById($id)
+	{
+		$this->db->query('SELECT * FROM users WHERE id= :id');
+		$this->db->bind(':id', $id);
+
+		$row = $this->db->single();
+
+		return $row;
+	}
+
 	public function login($email, $password)
 	{
 		$this->db->query('SELECT * FROM users WHERE email = :email');
@@ -58,12 +68,7 @@ class User
 		}
 	}
 
-	public function logout()
-	{
-		//unset($_SESSION['user_id']);
-		session_destroy();
-		redirect('users/login');
-	}
+	
 }
 
  ?>

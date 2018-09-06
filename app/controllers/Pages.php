@@ -13,6 +13,9 @@ class Pages extends Controller
 
 	public function index()
 	{
+		if (isLoggedIn()) {
+			redirect("posts");
+		}
 		
 		$dt = [
 		'title'=>'Share Posts',
